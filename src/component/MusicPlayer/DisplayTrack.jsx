@@ -1,5 +1,6 @@
 const DisplayTrack = ({ song ,audioRef ,setDuration , progressBarRef}) => {
   const onLoadedMetadata = () => {
+    
     const seconds = audioRef.current.duration;
     setDuration(seconds);
     progressBarRef.current.max = seconds;
@@ -7,7 +8,7 @@ const DisplayTrack = ({ song ,audioRef ,setDuration , progressBarRef}) => {
 
   const audioSource = song?.hub?.actions?.[1].uri
   return (
-    <div className="bg-green-500">
+    <div >
       <audio 
          ref={audioRef} 
          src={audioSource} 

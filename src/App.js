@@ -17,11 +17,11 @@ import { Routes ,Route }  from "react-router-dom";
 const App = () => {
 
   return (
-    <div className="w-full h-full ">
+    <div className="relative flex h-full">
       <Sidebar />
-       <div className='h-full flex  flex-col bg-gradient-to-br from-black to-[#121286]'>
+       <div className='flex-1 flex flex-col bg-gradient-to-br from-black to-[#121286]'>
         <Searchbar />
-          <div className="px-6 h-[calc(100vh-72px)] overflow-y-scroll hide-scrollbar flex">
+          <div className="px-6 h-[calc(100vh)] overflow-y-scroll hide-scrollbar flex">
           <div className="flex-1 h-fit pb-40">
             <Routes>
               <Route path="/" element={<Discover />} />

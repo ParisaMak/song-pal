@@ -1,36 +1,19 @@
 
-import Controls from './Controls';
+import Controls from './controls';
 import DisplayTrack from './DisplayTrack';
-import ProgressBar from './ProgressBar';
-import { useRef , useState } from 'react';
+import { useRef} from 'react';
 
 const AudioPlayer = ({song}) => {
-  const [timeProgress, setTimeProgress] = useState(0);
-  const [duration, setDuration] = useState(0);
+  
   const audioRef = useRef()
-  const progressBarRef = useRef();
   return (
-    <div className="flex flex-row justify-center items-center">
-      <div className='flex flex-col justify-center items-center w-full'>
+      <div className='w-full h-full flex flex-col justify-between items-center '>
         <DisplayTrack 
         song={song} 
         audioRef={audioRef} 
-        progressBarRef={progressBarRef}
-        setDuration={setDuration}
-
        />
         <Controls  
-        audioRef={audioRef}
-        progressBarRef={progressBarRef}
-        setTimeProgress={setTimeProgress}
-        duration={duration}/>
-        
-        <ProgressBar 
-        progressBarRef={progressBarRef}
-        audioRef={audioRef}
-        timeProgress={timeProgress}
-        duration={duration} />
-      </div>
+        audioRef={audioRef} />
     </div>
   )
 };

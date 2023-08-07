@@ -1,5 +1,6 @@
-import { useState,useEffect } from 'react';
 
+import { useState,useEffect } from 'react';
+import ReactLoading from 'react-loading';
 
 // icons
 import {
@@ -8,6 +9,7 @@ import {
 } from 'react-icons/io5';
 
 const Controls = ({ audioRef }) => {
+
   const [isPlaying, setIsPlaying] = useState(false);
   
   const togglePlayPause = () => {
@@ -22,14 +24,11 @@ const Controls = ({ audioRef }) => {
     }
   }, [isPlaying, audioRef]);
 
-  
   return (
-    <div className='f-4'>
-      <div >
-        <button onClick={togglePlayPause}>
-          {isPlaying ? <IoPauseSharp /> : <IoPlaySharp />}
+    <div className='h-full w-full'>
+        <button onClick={togglePlayPause} className=" relative w-full h-full flex flex-col justify-center items-center text-white text-3xl opacity-70">
+          {isPlaying ? <IoPauseSharp /> &&  <ReactLoading  type={"balls"} color={"white"} height={'20%'} width={'20%'} /> : <IoPlaySharp />}
         </button>
-      </div>
     </div>
   );
 };
