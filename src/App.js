@@ -22,7 +22,7 @@ const App = () => {
        <div className='flex-1 flex flex-col bg-gradient-to-br from-black to-[#121286]'>
         <Searchbar />
           <div className="px-6 h-[calc(100vh)] overflow-y-scroll hide-scrollbar flex">
-          <div className="flex-1 h-fit pb-40">
+          <div className="flex-1 h-full pb-40">
             <Routes>
               <Route path="/" element={<Discover />} />
               <Route path="/top-artists" element={<TopArtists />} />

@@ -26,9 +26,11 @@ useEffect(() =>{
       }
     )
   .then(res => setSongs(res),
-             setIsLoading(false))
+               setIsLoading(false),
+               setErrorMessage(false)
+            )
   .catch((errorMessage) => {
-              setErrorMessage("Unable to fetch user list");
+              setErrorMessage(true);
               console.log(errorMessage);
               setIsLoading(false);
   });
@@ -42,11 +44,10 @@ console.log(songs.data)
   const genreTitle = 'Pop';
 
   return(
-    <div className="flex flex-col">
-        <div>{isLoading ? <Loader title="Loading Songs...."/> : null}</div>
-        {errorMessage && <p className="error">,<Error /></p>}
+    <div className="flex flex-col h-full">
        <div className=" w-full flex justify-between items-center sm:flex-row flex-col mt-4 mb-10">
-           <h2 className="font-bold text-3xl text-blue"> Discover {genreTitle}</h2>
+           <h2 className="font-bold text-3xl text-white"> Discover {genreTitle}</h2>
+           
            <select 
               onChange={() => {}}
               value=""
@@ -58,12 +59,14 @@ console.log(songs.data)
                >{genre.title}</option>
             })}
            </select>
+           
        </div>
+       {isLoading ? <Loader/> : null }
+        {errorMessage ? <Error /> : null}
        <div className='flex flex-wrap sm: justify-center items-center gap-8'>
       {songs.data?.map((song ) => {
         return <SongCard key={song.key} song={song}/>
       })}
-
        </div>
     </div>
   )
