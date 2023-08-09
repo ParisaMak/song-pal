@@ -5,18 +5,14 @@ import { Link } from 'react-router-dom';
 
 const SongCard = ({song,key}) =>{
 
-const handlePauseClick = () =>{}
-const handlePlayClick = () => {}
-
   return(
 
-    <div className='flex flex-col w-[250px] h-[320px] bg-white bg-opacity-50 backdrop-blur-sm animate-slideup rounded-lg cursor-pointer box-border '> 
+    <div className='flex flex-col  w-[250px] p-4 bg-white/5 bg-opacity-80 backdrop-blur-sm animate-slideup rounded-lg cursor-pointer '> 
       <div className='relative w-full h-56 group flex justify-center  '>
            <div className='absolute flex inset-2 justify-center items-end bg-black bg-opacity-50 rounded-lg group-hover:bg-white/5 active:bg-opacity-100'>
             <AudioPlayer
-            song={song} 
-            handlePause={handlePauseClick} 
-            handlePlay={handlePlayClick}/>
+            className='w-full h-full flex flex-col justify-between items-center '
+            song={song} />
             <p >{song?.artists?.alias} </p>
            </div>
            <img className="rounded-lg  border-4 border-white" src={song?.images?.coverart}  key={key} alt="" />

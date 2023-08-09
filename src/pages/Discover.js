@@ -1,52 +1,18 @@
-import { useEffect , useState }  from 'react';
+
 import Error from '../component/Error';
 import Loader from '../component/Loader';
 import SongCard from '../component/SongCard';
 import {genres} from '../asset/constants';
-import axios from 'axios';
-import options from './request'
 
 
+const Discover = ({songs,errorMessage ,isLoading}) => {
 
-const Discover = () => {
-
-const [ songs , setSongs ] = useState('')
-const [isLoading, setIsLoading] = useState(false);
-const [errorMessage, setErrorMessage] = useState("");
-
-useEffect(() =>{
- 
-  setIsLoading(true);
-  axios.get(
-     options.worldChart,
-       { headers: {
-        'X-RapidAPI-Key': '53c14de0e0msh35541b6d6f0feb1p166c7fjsn6fcc9ebaa163',
-        'X-RapidAPI-Host': 'shazam-core.p.rapidapi.com'
-      }
-      }
-    )
-  .then(res => setSongs(res),
-               setIsLoading(false),
-               setErrorMessage(false)
-            )
-  .catch((errorMessage) => {
-              setErrorMessage(true);
-              console.log(errorMessage);
-              setIsLoading(false);
-  });
-},[])
-
-
-
-  
-
-console.log(songs.data)
   const genreTitle = 'Pop';
-
+console.log(songs)
   return(
-    <div className="flex flex-col h-full">
-       <div className=" w-full flex justify-between items-center sm:flex-row flex-col mt-4 mb-10">
-           <h2 className="font-bold text-3xl text-white"> Discover {genreTitle}</h2>
+    <div className="flex flex-col ">
+       <div className="w-full flex justify-between items-center sm:flex-row flex-col mt-4 mb-10">
+           <h2 className=" font-bold text-3xl text-white"> Discover {genreTitle}</h2>
            
            <select 
               onChange={() => {}}

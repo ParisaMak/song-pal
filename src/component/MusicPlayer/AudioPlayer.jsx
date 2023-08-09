@@ -7,7 +7,7 @@ const AudioPlayer = ({song}) => {
   
   const audioRef = useRef()
   return (
-      <div className='w-full h-full flex flex-col justify-between items-center '>
+      <div className='h-full '>
         <DisplayTrack 
         song={song} 
         audioRef={audioRef} 
