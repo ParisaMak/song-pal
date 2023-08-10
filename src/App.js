@@ -1,5 +1,4 @@
 import React  from 'react';
-import { useEffect, useState } from 'react'; 
 import Searchbar from "./component/Searchbar"; 
 import Sidebar from "./component/Sidebar"; 
 import Search from "./pages/Search"; 
@@ -11,52 +10,83 @@ import ArtistDetails from "./pages/ArtistsDetails";
 import SongDetails from "./pages/SongDetails"; 
 import TopPlay from "./component/TopPlay"; 
 import { Routes, Route } from "react-router-dom"; 
-import axios from 'axios'; 
+
+
 
 
 
 const App = ( ) => {
 
-  const [ songs , setSongs ] = useState('')
-  const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-
-  useEffect(() =>{
- 
-    setIsLoading(true);
-    axios.get(
-      'https://shazam-core.p.rapidapi.com/v1/charts/world',
-         { headers: {
-          'X-RapidAPI-Key': '53c14de0e0msh35541b6d6f0feb1p166c7fjsn6fcc9ebaa163',
-          'X-RapidAPI-Host': 'shazam-core.p.rapidapi.com'
-        }
-        }
-      )
-    .then(res => setSongs(res),
-                 setIsLoading(false),
-                 setErrorMessage(false)
-              )
-    .catch((errorMessage) => {
-                setErrorMessage(true);
-                console.log(errorMessage);
-                setIsLoading(false);
-    });
   
-  },[])
+ 
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     setIsLoading(true);
+  //     setErrorMessage(false);
+  
+  //     try {
+  //       const response = await fetch('https://shazam-core.p.rapidapi.com/v1/charts/world', {
+  //         headers: {
+  //           'X-RapidAPI-Key': '53c14de0e0msh35541b6d6f0feb1p166c7fjsn6fcc9ebaa163',
+  //           'X-RapidAPI-Host': 'shazam-core.p.rapidapi.com'
+  //         },
+  //         method: 'GET',
+  //       });
+  //       const data = await response.json();
+  //       console.log(data);
+  //       setSongs(data);
+  //       setIsLoading(false);
+  //     } catch (error) {
+  //       setErrorMessage(true);
+  //       console.log(error);
+  //       setIsLoading(false);
+  //     }
+  //   };
+  
+  //   fetchData();
+  // }, []);
+
+
+  // useEffect(() => {
+  //   const urls = [
+  //     'https://shazam-core.p.rapidapi.com/v1/charts/world',
+  //     'https://shazam-core.p.rapidapi.com/v1/tracks/details?track_id=667312288']
+
+  //     const headers = {
+  //       'X-RapidAPI-Key': '53c14de0e0msh35541b6d6f0feb1p166c7fjsn6fcc9ebaa163',
+  //       'X-RapidAPI-Host': 'shazam-core.p.rapidapi.com'
+  //     };
+      
+  //     const fetchData = async () => {
+  //       try {
+  //         const responses = await Promise.all(urls.map(url => fetch(url, { method: 'GET', headers })));
+  //         const results = await Promise.all(responses.map(resp => resp.json()));
+  //         console.log(results);
+  //         setSongs(results[0])
+  //         setIsLoading(false);
+       
+  //       } catch (error) {
+  //         console.error('Error:', error);
+  //         setErrorMessage(true);
+  //         setIsLoading(false);
+  //       }
+  //     };
+    
+  //     fetchData();
+   
+    
+  // }, []);
 
   return ( 
     <div className="relative flex "> 
       <Sidebar /> 
       <div className='flex-1 flex flex-col bg-gradient-to-br from-black to-[#121286]'> 
         <Searchbar /> 
-        <div className="px-6 h-[calc(100vh-72px)] overflow-y-scroll hide-scrollbar flex xl:flex-row flex-col-reverse"> 
+        <div className="px-6 h-[calc(100vh)] overflow-y-scroll hide-scrollbar flex xl:flex-row flex-col-reverse"> 
       
           <div className="flex-1 h-fit pb-40"> 
             <Routes> 
-              <Route path="/" element={<Discover 
-                songs={songs} 
-                isLoading={isLoading} 
-                errorMessage={errorMessage} />} /> 
+              <Route path="/" element={<Discover />} /> 
               <Route path="/top-artists" element={<TopArtists />} /> 
               <Route path="/top-charts" element={<TopCharts />} /> 
               <Route path="/around-you" element={<AroundYou />} /> 
@@ -66,7 +96,7 @@ const App = ( ) => {
             </Routes> 
           </div> 
           <div className="xl:sticky relative top-0 h-fit"> 
-            <TopPlay songs={songs} /> 
+            <TopPlay /> 
           </div> 
         </div> 
       </div> 
