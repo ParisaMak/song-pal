@@ -1,51 +1,19 @@
+import React from 'react';
+import { MdSkipNext, MdSkipPrevious } from 'react-icons/md';
+import { BsArrowRepeat, BsFillPauseFill, BsFillPlayFill, BsShuffle } from 'react-icons/bs';
 
-import { useState,useEffect } from 'react';
-
-
-// icons
-import {
-  IoPlaySharp,
-  IoPauseSharp,
-} from 'react-icons/io5';
-
-const Controls = ({ audioRef }) => { 
-  const [isPlaying, setIsPlaying] = useState(false); 
-  const [isLoading, setIsLoading] = useState(false); 
- 
-  const togglePlayPause = () => { 
-    setIsPlaying(prev => !prev); 
-  }; 
- 
-  useEffect(() => { 
-    try { 
-      if (isPlaying) { 
-        setIsLoading(true); 
-        audioRef.current.play().then(() => setIsLoading(false)); 
-      } else { 
-        audioRef.current.pause(); 
-      } 
-    } catch (error) { 
-      console.error(error); 
-    } 
-  }, [isPlaying, audioRef]); 
- 
-  return ( 
-    <div className='h-full w-full'> 
-      <button 
-        onClick={togglePlayPause} 
-        className='relative w-full h-full flex flex-col justify-center items-center text-white text-3xl opacity-70' 
-      > 
-        {isPlaying ? ( 
-          <> 
-            <IoPauseSharp /> 
-            {isLoading } 
-          </> 
-        ) : ( 
-          <IoPlaySharp /> 
-        )} 
-      </button> 
-    </div> 
-  ); 
-}; 
+const Controls = ({ isPlaying, repeat, setRepeat, shuffle, setShuffle, currentSongs, handlePlayPause, handlePrevSong, handleNextSong }) => (
+  <div className="flex items-center justify-around md:w-36 lg:w-52 2xl:w-80">
+    <BsArrowRepeat size={20} color={repeat ? 'red' : 'white'} onClick={() => setRepeat((prev) => !prev)} className="hidden sm:block cursor-pointer" />
+    {currentSongs?.length && <MdSkipPrevious size={30} color="#FFF" className="cursor-pointer" onClick={handlePrevSong} />}
+    {isPlaying ? (
+      <BsFillPauseFill size={45} color="#FFF" onClick={handlePlayPause} className="cursor-pointer" />
+    ) : (
+      <BsFillPlayFill size={45} color="#FFF" onClick={handlePlayPause} className="cursor-pointer" />
+    )}
+    {currentSongs?.length && <MdSkipNext size={30} color="#FFF" className="cursor-pointer" onClick={handleNextSong} />}
+    <BsShuffle size={20} color={shuffle ? 'red' : 'white'} onClick={() => setShuffle((prev) => !prev)} className="hidden sm:block cursor-pointer" />
+  </div>
+);
 
 export default Controls;

@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit"
-import playerReducer from './features/PlayerSlice'
+import playerReducer from "./features/playerSlice"
 import { shazamCoreApi } from "./service/shazamCore"
 
 

@@ -10,15 +10,11 @@ import ArtistDetails from "./pages/ArtistsDetails";
 import SongDetails from "./pages/SongDetails"; 
 import TopPlay from "./component/TopPlay"; 
 import { Routes, Route } from "react-router-dom"; 
-
-
-
-
+import { useSelector } from 'react-redux';
+import  MusicPlayer  from "./component/MusicPlayer/index"
 
 const App = ( ) => {
-
-  
- 
+ const {activeSong} = useSelector((state) => state.player)
   // useEffect(() => {
   //   const fetchData = async () => {
   //     setIsLoading(true);
@@ -100,6 +96,13 @@ const App = ( ) => {
           </div> 
         </div> 
       </div> 
+
+      {activeSong?.title && (
+        <div className="absolute h-28 bottom-0 left-0 right-0 flex animate-slideup bg-gradient-to-br from-white/10 to-[#2a2a80] backdrop-blur-lg rounded-t-3xl z-10">
+          <MusicPlayer />
+        </div>
+      )}
+
     </div> 
   ); 
 }; 
