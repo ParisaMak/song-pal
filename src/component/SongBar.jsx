@@ -14,11 +14,11 @@ const SongBar = ({ song, i,isPlaying, activeSong, handlePauseClick, handlePlayCl
       />
       <div className="flex-1 flex flex-col justify-center mx-3">
        
-          <Link to={`/songs/${song.key}`}>
+    
             <p className="text-xs md:font-bold lg:text-md text-white">
               {song?.title}
             </p>
-          </Link>
+  
         <p className="hidden md:block text-xs text-gray-300 mt-1">
           { song?.subtitle}
         </p>
