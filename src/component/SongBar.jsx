@@ -9,12 +9,11 @@ const SongBar = ({ song, i,isPlaying, activeSong, handlePauseClick, handlePlayCl
     <div className="flex-1 flex flex-row justify-between items-center">
       <img
         className="w-20 h-20 rounded-lg"
-        src={song?.images?.coverart}
+        src={song?.images?.coverart || song?.images?.background }
         alt={song?.title}
       />
       <div className="flex-1 flex flex-col justify-center mx-3">
        
-    
             <p className="text-xs md:font-bold lg:text-md text-white">
               {song?.title}
             </p>
