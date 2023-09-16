@@ -12,10 +12,10 @@ const SongBarArtist = ({ song, i, activeSong}) => {
         }
       />
       <div className="flex-1 flex flex-col justify-center mx-3">
-        <p className="text-base text-gray-300 mt-1">
+        <p className="text-xs md:font-bold lg:text-md text-gray-300 mt-1">
           { song?.attributes?.name}
         </p>
-        <p className="text-sm text-gray-400 mt-1">
+        <p className="hidden md:block text-gray-400 mt-1">
           { song?.attributes?.albumName}
         </p>
       </div>
