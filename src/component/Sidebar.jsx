@@ -20,7 +20,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className="hidden md:flex bg-[#191624] flex-col w-50 py-4 px-8 text-white">
+      <div className=" hidden lg:flex bg-[#191624] flex-col w-[300px] py-4 px-4 text-white " >
         <img src={logo} alt="logo" className="scale-50 stroke-white" />
         <ul>
           {linksTo.map((link) => (
@@ -37,12 +37,12 @@ const Sidebar = () => {
         </ul>
       </div>
 
-      <div className="absolute md:hidden block top-6 right-12">
+      <div className="absolute lg:hidden block top-4 right-6 z-40">
         <button onClick={handleClick}>
           {mobileMenuOpen ? (
-            <AiOutlineClose className="w-6 h-6 text-white mr-2 cursor-pointer md:hidden" />
+            <AiOutlineClose className="w-6 h-6 text-white mr-2 cursor-pointer lg:hidden" />
           ) : (
-            <HiOutlineMenu className="w-6 h-6 text-white mr-2 cursor-pointer md:hidden" />
+            <HiOutlineMenu className=" w-6 h-6 text-white mr-2 cursor-pointer lg:hidden" />
           )}
         </button>
       </div>

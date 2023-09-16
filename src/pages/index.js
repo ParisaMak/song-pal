@@ -1,0 +1,22 @@
+export { default as ArtistCard} from '../component/ArtistCard';
+export { default as ArtistTopSongs} from '../component/ArtistTopSongs';
+export { default as DetailsHeader} from '../component/DetailsHeader';
+export { default as DetailsHeaderArtist} from '../component/DetailsHeaderArtist';
+export { default as Error} from '../component/DetailsHeaderArtist';
+export { default as Loader} from '../component/Loader';
+export { default as PlayPause} from '../component/PlayPause';
+export { default as RelatedSongs} from '../component/RelatedSongs';
+export { default as Searchbar} from '../component/Searchbar';
+export { default as Sidebar} from '../component/Sidebar';
+export { default as SongBar} from '../component/SongBar';
+export { default as SongBarArtist} from '../component/songBarArtist';
+export { default as SongCard} from '../component/SongCard';
+export { default as TopPlay} from '../component/TopPlay';
+
+export { default as AroundYou} from '../pages/AroundYou';
+export { default as ArtistDetails} from '../pages/ArtistsDetails';
+export { default as Discover} from '../pages/Discover';
+export { default as Search} from '../pages/Search';
+export { default as SongDetails} from '../pages/SongDetails';
+export { default as TopArtists} from '../pages/TopArtists';
+export { default as TopCharts} from '../pages/TopCharts';
